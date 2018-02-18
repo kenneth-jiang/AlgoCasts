@@ -11,6 +11,7 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
+// MY SOLUTION ------------------------
 function fromLast(list, n) {
   let slow = list.head;
   let fast = list.head;
@@ -18,6 +19,20 @@ function fromLast(list, n) {
   while (n > counter) {
     fast = fast.next;
     counter ++;
+  }
+  while (fast.next) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+  return slow;
+}
+// SOLUTION #1 -------------------------
+function fromLast(list, n) {
+  let slow = list.getFirst();
+  let fast = list.getFirst();
+  while (n > 0) {
+    fast = fast.next;
+    n--;
   }
   while (fast.next) {
     slow = slow.next;
